@@ -11,19 +11,20 @@ grow_vertical = 2
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 0
 offset_left = -104.0
-offset_top = -45.0
+offset_top = 1.0
 offset_right = 255.0
-offset_bottom = 698.0
+offset_bottom = 725.0
 color = Color(0.00392157, 0.00392157, 0.00392157, 0.231373)
 
 [node name="ColorRect2" type="ColorRect" parent="."]
+layout_mode = 0
 offset_left = 945.0
 offset_top = -59.0
 offset_right = 1287.0
 offset_bottom = 698.0
 color = Color(0.00392157, 0.00392157, 0.00392157, 0.235294)
 
-[node name="Player 1" type="Label" parent="."]
+[node name="Player 2" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
@@ -37,7 +38,7 @@ size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 100
 text = "W"
 
-[node name="Player 2" type="Label" parent="."]
+[node name="Player 1" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0

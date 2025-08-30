@@ -10,3 +10,8 @@ script = ExtResource("1_8gbba")
 [node name="Aguas" parent="." instance=ExtResource("1_jjgbg")]
 
 [node name="GUI" parent="." instance=ExtResource("2_bo1nx")]
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 60.0
+one_shot = true
+autostart = true

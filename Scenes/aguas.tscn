@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://8cedbuk0hltb"]
+[gd_scene load_steps=6 format=3 uid="uid://8cedbuk0hltb"]
 
 [ext_resource type="Script" uid="uid://bt2w45nflqu23" path="res://Scripts/apertura_olas.gd" id="1_5j4t7"]
 
@@ -10,17 +10,21 @@ size = Vector2(1094.94, 780)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5j4t7"]
 size = Vector2(1143, 775)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e4k8u"]
+size = Vector2(125, 731)
+
 [node name="Aguas" type="Node2D"]
 script = ExtResource("1_5j4t7")
-metadata/_edit_vertical_guides_ = [541.0]
-metadata/_edit_horizontal_guides_ = [326.0]
+metadata/_edit_vertical_guides_ = [639.0]
+metadata/_edit_horizontal_guides_ = [361.0]
 
 [node name="ola_izquierda" type="RigidBody2D" parent="."]
-position = Vector2(-236, -26)
+position = Vector2(-302, -9)
 gravity_scale = 0.0
 lock_rotation = true
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="ola_izquierda"]
+modulate = Color(0.109804, 0.537255, 1, 1)
 position = Vector2(-5.00001, 339)
 scale = Vector2(1096, 772)
 mesh = SubResource("QuadMesh_lpnpe")
@@ -30,13 +34,16 @@ position = Vector2(-7, 350)
 shape = SubResource("RectangleShape2D_myy0b")
 
 [node name="Sprite2D" type="Sprite2D" parent="ola_izquierda"]
+position = Vector2(264.25, 350.25)
+scale = Vector2(529.5, 701.5)
 
 [node name="ola_derecha" type="RigidBody2D" parent="."]
-position = Vector2(430, -13)
+position = Vector2(603, 11)
 gravity_scale = 0.0
 lock_rotation = true
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="ola_derecha"]
+modulate = Color(0.0705882, 0.52549, 1, 1)
 position = Vector2(1122.5, 339)
 scale = Vector2(1141, 774)
 mesh = SubResource("QuadMesh_lpnpe")
@@ -47,3 +54,12 @@ position = Vector2(895, 0.5)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ola_derecha"]
 position = Vector2(1123.5, 337.5)
 shape = SubResource("RectangleShape2D_5j4t7")
+
+[node name="Carril" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Carril"]
+position = Vector2(641.5, 372.5)
+shape = SubResource("RectangleShape2D_e4k8u")
+debug_color = Color(0.924897, 0.273541, 1.92523e-07, 0.42)
+
+[connection signal="body_entered" from="Carril" to="." method="_on_carril_body_entered"]

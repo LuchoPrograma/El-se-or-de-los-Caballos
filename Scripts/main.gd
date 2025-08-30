@@ -1,49 +1,90 @@
 extends Node
 
 var player1_controlls = ["LEFT", "RIGHT", "UP", "DOWN"]
-var randomized_input =[]
-var input_player1 = []
-var inpu:String
+var player2_controlls = ["W","A","S","D"]
+
+var randomized_player1_input =[]
+var randomized_player2_input = []
+#var input_player1 = []
+var input_player1:String
+var input_player2:String
 
 func _ready() -> void:
-	print("FALLO")
-	randomize_input()
+	randomize_input_pl1()
+	randomize_input_pl2()
 	
-
 
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("ui_accept"):
-		randomize_input()
 
-	
+	player1_input()
+	player2_input()
+		
+func player1_input():
 	if Input.is_action_just_pressed("up_arrow"):
-		input_player1.append(player1_controlls[2])
-		inpu = player1_controlls[2]
+		#input_player1.append(player1_controlls[2])
+		input_player1 = player1_controlls[2]
 	if Input.is_action_just_pressed("left_arrow"):
-		input_player1.append(player1_controlls[0])
+		#input_player1.append(player1_controlls[0])
+		input_player1 = player1_controlls[0] 
 	if Input.is_action_just_pressed("down_arrow"):
-		input_player1.append(player1_controlls[3])
+		#input_player1.append(player1_controlls[3])
+		input_player1 = player1_controlls[3]
 	if Input.is_action_just_pressed("right_arrow"):
-		input_player1.append(player1_controlls[1])
+		#input_player1.append(player1_controlls[1])
+		input_player1 = player1_controlls[1]
 		
 		
-	if randomized_input.size() == input_player1.size() && randomized_input.size() > 0:
-		if randomized_input[0] == input_player1[0]:
+	if randomized_player1_input.size() > 0 and input_player1 != "":
+		if randomized_player1_input[0] == input_player1:
 			print("EXITO")
-			randomize_input()
-			$Aguas.open_tides()
+			randomize_input_pl1()
+			$Aguas.open_tides_pl1()
 		else:
 			print("FALLO")
-			randomize_input()
-			$Aguas.close_tides()
-			
+			randomize_input_pl1()
+			$Aguas.close_tides_pl1()
+
+func player2_input():
+	#var player2_controlls = ["W","A","S","D"]
+	if Input.is_action_just_pressed("up_key"):
+		#input_player1.append(player1_controlls[2])
+		
+		input_player2 = player2_controlls[0]
+	if Input.is_action_just_pressed("left_key"):
+		#input_player1.append(player1_controlls[0])
+		input_player2 = player2_controlls[1] 
+	if Input.is_action_just_pressed("down_key"):
+		#input_player1.append(player1_controlls[3])
+		input_player2 = player2_controlls[2]
+	if Input.is_action_just_pressed("right_key"):
+		#input_player1.append(player1_controlls[1])
+		input_player2 = player2_controlls[3]
+		
+		
+	if randomized_player2_input.size() > 0 and input_player2 != "":
+		if randomized_player2_input[0] == input_player2:
+			print("EXITO")
+			randomize_input_pl2()
+			$Aguas.open_tides_pl2()
+		else:
+			print("FALLO")
+			randomize_input_pl2()
+			$Aguas.close_tides_pl2()
 	
-func randomize_input() -> void:
-	
-	randomized_input.clear()
-	input_player1.clear()
+func randomize_input_pl1() -> void:
+	randomized_player1_input.clear()
+	input_player1 = ""
 	var randin = randi_range(0,3)
-	randomized_input.append(player1_controlls[randin])
-	$"GUI/Player 1".text = randomized_input[0]
-	$"GUI/Player 2".text = randomized_input[0]
+	randomized_player1_input.append(player1_controlls[randin])
+	$"GUI/Player 1".text = randomized_player1_input[0]
+	
+	
+func randomize_input_pl2():
+	input_player2 = ""
+	randomized_player2_input.clear()
+	var randin2 =  randi_range(0,3)
+	randomized_player2_input.append(player2_controlls[randin2])
+	$"GUI/Player 2".text = randomized_player2_input[0]
+	
+	
 	
