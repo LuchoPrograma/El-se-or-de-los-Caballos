@@ -1,0 +1,49 @@
+[gd_scene load_steps=5 format=3 uid="uid://8cedbuk0hltb"]
+
+[ext_resource type="Script" uid="uid://bt2w45nflqu23" path="res://Scripts/apertura_olas.gd" id="1_5j4t7"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_lpnpe"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_myy0b"]
+size = Vector2(1094.94, 780)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5j4t7"]
+size = Vector2(1143, 775)
+
+[node name="Aguas" type="Node2D"]
+script = ExtResource("1_5j4t7")
+metadata/_edit_vertical_guides_ = [541.0]
+metadata/_edit_horizontal_guides_ = [326.0]
+
+[node name="ola_izquierda" type="RigidBody2D" parent="."]
+position = Vector2(-236, -26)
+gravity_scale = 0.0
+lock_rotation = true
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="ola_izquierda"]
+position = Vector2(-5.00001, 339)
+scale = Vector2(1096, 772)
+mesh = SubResource("QuadMesh_lpnpe")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ola_izquierda"]
+position = Vector2(-7, 350)
+shape = SubResource("RectangleShape2D_myy0b")
+
+[node name="Sprite2D" type="Sprite2D" parent="ola_izquierda"]
+
+[node name="ola_derecha" type="RigidBody2D" parent="."]
+position = Vector2(430, -13)
+gravity_scale = 0.0
+lock_rotation = true
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="ola_derecha"]
+position = Vector2(1122.5, 339)
+scale = Vector2(1141, 774)
+mesh = SubResource("QuadMesh_lpnpe")
+
+[node name="Sprite2D" type="Sprite2D" parent="ola_derecha"]
+position = Vector2(895, 0.5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ola_derecha"]
+position = Vector2(1123.5, 337.5)
+shape = SubResource("RectangleShape2D_5j4t7")
