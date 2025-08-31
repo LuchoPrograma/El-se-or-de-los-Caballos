@@ -1,5 +1,7 @@
 extends Node
 
+@export var horse: PackedScene
+
 var player1_controlls = ["LEFT", "RIGHT", "UP", "DOWN"]
 var player2_controlls = ["W","A","S","D"]
 
@@ -9,16 +11,25 @@ var randomized_player2_input = []
 var input_player1:String
 var input_player2:String
 
+var spawner_location 
+
 func _ready() -> void:
 	randomize_input_pl1()
 	randomize_input_pl2()
 	
+	
 
 func _process(delta: float) -> void:
-
+	
+	$GUI/Timer.text = str(int($Timer.time_left))
+	
 	player1_input()
 	player2_input()
-		
+	
+	spawner_location = randf()
+	$HorseSpawner/PathFollow2D.progress_ratio = spawner_location
+	
+
 func player1_input():
 	if Input.is_action_just_pressed("up_arrow"):
 		#input_player1.append(player1_controlls[2])
@@ -76,15 +87,21 @@ func randomize_input_pl1() -> void:
 	input_player1 = ""
 	var randin = randi_range(0,3)
 	randomized_player1_input.append(player1_controlls[randin])
-	$"GUI/Player 1".text = randomized_player1_input[0]
-	
+	$"GUI/ColorRect2/Player 1".text = randomized_player1_input[0]
 	
 func randomize_input_pl2():
 	input_player2 = ""
 	randomized_player2_input.clear()
 	var randin2 =  randi_range(0,3)
 	randomized_player2_input.append(player2_controlls[randin2])
-	$"GUI/Player 2".text = randomized_player2_input[0]
+	$"GUI/ColorRect/Player 2".text = randomized_player2_input[0]
 	
 	
+	
+
+
+func _on_spawn_timer_timeout() -> void:
+	var newHorse = horse.instantiate()
+	get_node("HorseSpawner").add_child(newHorse)
+	newHorse.global_position = $HorseSpawner/PathFollow2D.position
 	

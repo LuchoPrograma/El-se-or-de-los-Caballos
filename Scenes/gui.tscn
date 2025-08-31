@@ -10,57 +10,65 @@ grow_vertical = 2
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 0
-offset_left = -104.0
+offset_left = 1.0
 offset_top = 1.0
-offset_right = 255.0
-offset_bottom = 725.0
+offset_right = 251.0
+offset_bottom = 721.0
 color = Color(0.00392157, 0.00392157, 0.00392157, 0.231373)
+
+[node name="Player 2" type="Label" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -51.5
+offset_right = 50.0
+offset_bottom = 51.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 75
+text = "W"
 
 [node name="ColorRect2" type="ColorRect" parent="."]
 layout_mode = 0
-offset_left = 945.0
-offset_top = -59.0
-offset_right = 1287.0
-offset_bottom = 698.0
+offset_left = 1028.0
+offset_top = 1.0
+offset_right = 1278.0
+offset_bottom = 721.0
 color = Color(0.00392157, 0.00392157, 0.00392157, 0.235294)
 
-[node name="Player 2" type="Label" parent="."]
+[node name="Player 1" type="Label" parent="ColorRect2"]
 layout_mode = 1
-anchors_preset = 4
+anchors_preset = 8
+anchor_left = 0.5
 anchor_top = 0.5
+anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 77.0
-offset_top = -68.5
-offset_right = 172.0
-offset_bottom = 68.5
-grow_vertical = 2
-size_flags_horizontal = 4
-theme_override_font_sizes/font_size = 100
-text = "W"
-
-[node name="Player 1" type="Label" parent="."]
-layout_mode = 1
-anchors_preset = 6
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -151.0
-offset_top = -68.5
-offset_right = -56.0
-offset_bottom = 68.5
-grow_horizontal = 0
-grow_vertical = 2
-size_flags_horizontal = 8
-theme_override_font_sizes/font_size = 100
-text = "W"
-
-[node name="HSplitContainer" type="HSplitContainer" parent="."]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+offset_left = -50.0
+offset_top = -51.5
+offset_right = 50.0
+offset_bottom = 51.5
 grow_horizontal = 2
 grow_vertical = 2
-split_offset = 1475
+size_flags_horizontal = 8
+theme_override_font_sizes/font_size = 75
+text = "W"
+
+[node name="Timer" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.4875
+anchor_top = 0.0569444
+anchor_right = 0.4875
+anchor_bottom = 0.0569444
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 23.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 60
+text = "60"
+metadata/_edit_use_anchors_ = true

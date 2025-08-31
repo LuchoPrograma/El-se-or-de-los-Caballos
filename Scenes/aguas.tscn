@@ -1,36 +1,45 @@
-[gd_scene load_steps=6 format=3 uid="uid://8cedbuk0hltb"]
+[gd_scene load_steps=8 format=3 uid="uid://8cedbuk0hltb"]
 
 [ext_resource type="Script" uid="uid://bt2w45nflqu23" path="res://Scripts/apertura_olas.gd" id="1_5j4t7"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_5j4t7"]
+absorbent = true
 
 [sub_resource type="QuadMesh" id="QuadMesh_lpnpe"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_myy0b"]
-size = Vector2(1094.94, 780)
+size = Vector2(1094.94, 764)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_e4k8u"]
+absorbent = true
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5j4t7"]
 size = Vector2(1143, 775)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e4k8u"]
-size = Vector2(125, 731)
+size = Vector2(1, 794)
 
 [node name="Aguas" type="Node2D"]
 script = ExtResource("1_5j4t7")
-metadata/_edit_vertical_guides_ = [639.0]
-metadata/_edit_horizontal_guides_ = [361.0]
+metadata/_edit_vertical_guides_ = [639.0, 320.0, 960.0]
+metadata/_edit_horizontal_guides_ = [361.0, -33.0]
 
 [node name="ola_izquierda" type="RigidBody2D" parent="."]
-position = Vector2(-302, -9)
+position = Vector2(-224, 356)
+collision_mask = 0
+physics_material_override = SubResource("PhysicsMaterial_5j4t7")
 gravity_scale = 0.0
 lock_rotation = true
+linear_damp = 0.5
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="ola_izquierda"]
 modulate = Color(0.109804, 0.537255, 1, 1)
-position = Vector2(-5.00001, 339)
+position = Vector2(-3.00001, -2.00006)
 scale = Vector2(1096, 772)
 mesh = SubResource("QuadMesh_lpnpe")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ola_izquierda"]
-position = Vector2(-7, 350)
+position = Vector2(-5, -1)
 shape = SubResource("RectangleShape2D_myy0b")
 
 [node name="Sprite2D" type="Sprite2D" parent="ola_izquierda"]
@@ -38,28 +47,32 @@ position = Vector2(264.25, 350.25)
 scale = Vector2(529.5, 701.5)
 
 [node name="ola_derecha" type="RigidBody2D" parent="."]
-position = Vector2(603, 11)
+position = Vector2(1530, 357)
+collision_mask = 0
+physics_material_override = SubResource("PhysicsMaterial_e4k8u")
 gravity_scale = 0.0
 lock_rotation = true
+linear_damp = 0.5
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="ola_derecha"]
-modulate = Color(0.0705882, 0.52549, 1, 1)
-position = Vector2(1122.5, 339)
+modulate = Color(0.109804, 0.537255, 1, 1)
+position = Vector2(1, -2)
 scale = Vector2(1141, 774)
 mesh = SubResource("QuadMesh_lpnpe")
 
-[node name="Sprite2D" type="Sprite2D" parent="ola_derecha"]
-position = Vector2(895, 0.5)
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ola_derecha"]
-position = Vector2(1123.5, 337.5)
+position = Vector2(5, 1)
 shape = SubResource("RectangleShape2D_5j4t7")
 
 [node name="Carril" type="Area2D" parent="."]
+position = Vector2(638, 355)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Carril"]
-position = Vector2(641.5, 372.5)
+position = Vector2(2, -9)
 shape = SubResource("RectangleShape2D_e4k8u")
 debug_color = Color(0.924897, 0.273541, 1.92523e-07, 0.42)
 
+[connection signal="body_entered" from="ola_izquierda" to="." method="_on_ola_izquierda_body_entered"]
+[connection signal="body_entered" from="ola_derecha" to="." method="_on_ola_derecha_body_entered"]
 [connection signal="body_entered" from="Carril" to="." method="_on_carril_body_entered"]
+[connection signal="body_exited" from="Carril" to="." method="_on_carril_body_exited"]
