@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://8cedbuk0hltb"]
+[gd_scene load_steps=10 format=3 uid="uid://8cedbuk0hltb"]
 
 [ext_resource type="Script" uid="uid://bt2w45nflqu23" path="res://Scripts/apertura_olas.gd" id="1_5j4t7"]
+[ext_resource type="Texture2D" uid="uid://cekriw8bljokd" path="res://Assets/Sprites/agua 2.png" id="2_e4k8u"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_5j4t7"]
 absorbent = true
@@ -9,6 +10,9 @@ absorbent = true
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_myy0b"]
 size = Vector2(1094.94, 764)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8m1ja"]
+size = Vector2(921, 745.75)
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_e4k8u"]
 absorbent = true
@@ -43,8 +47,18 @@ position = Vector2(-5, -1)
 shape = SubResource("RectangleShape2D_myy0b")
 
 [node name="Sprite2D" type="Sprite2D" parent="ola_izquierda"]
-position = Vector2(264.25, 350.25)
-scale = Vector2(529.5, 701.5)
+modulate = Color(1, 1, 1, 0.388235)
+position = Vector2(282.641, -2.95339)
+scale = Vector2(-8.12247, 12.029)
+texture = ExtResource("2_e4k8u")
+
+[node name="HorseDetector" type="Area2D" parent="ola_izquierda"]
+position = Vector2(224, -356)
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ola_izquierda/HorseDetector"]
+position = Vector2(-176, 355.875)
+shape = SubResource("RectangleShape2D_8m1ja")
 
 [node name="ola_derecha" type="RigidBody2D" parent="."]
 position = Vector2(1530, 357)
@@ -64,6 +78,20 @@ mesh = SubResource("QuadMesh_lpnpe")
 position = Vector2(5, 1)
 shape = SubResource("RectangleShape2D_5j4t7")
 
+[node name="Sprite2D" type="Sprite2D" parent="ola_derecha"]
+modulate = Color(1, 1, 1, 0.403922)
+position = Vector2(-359.5, -2.00002)
+scale = Vector2(6.42188, 12.1562)
+texture = ExtResource("2_e4k8u")
+
+[node name="HorseDetector" type="Area2D" parent="ola_derecha"]
+position = Vector2(224, -356)
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ola_derecha/HorseDetector"]
+position = Vector2(-305, 365.75)
+shape = SubResource("RectangleShape2D_8m1ja")
+
 [node name="Carril" type="Area2D" parent="."]
 position = Vector2(638, 355)
 
@@ -73,6 +101,8 @@ shape = SubResource("RectangleShape2D_e4k8u")
 debug_color = Color(0.924897, 0.273541, 1.92523e-07, 0.42)
 
 [connection signal="body_entered" from="ola_izquierda" to="." method="_on_ola_izquierda_body_entered"]
+[connection signal="body_entered" from="ola_izquierda/HorseDetector" to="." method="_on_horse_detector_body_entered"]
 [connection signal="body_entered" from="ola_derecha" to="." method="_on_ola_derecha_body_entered"]
+[connection signal="body_entered" from="ola_derecha/HorseDetector" to="." method="_on_horse_detector_body_entered"]
 [connection signal="body_entered" from="Carril" to="." method="_on_carril_body_entered"]
 [connection signal="body_exited" from="Carril" to="." method="_on_carril_body_exited"]

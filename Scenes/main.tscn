@@ -1,9 +1,14 @@
-[gd_scene load_steps=6 format=3 uid="uid://bubjtu45kgyu1"]
+[gd_scene load_steps=11 format=3 uid="uid://bubjtu45kgyu1"]
 
 [ext_resource type="Script" uid="uid://bafcsnj51p3nm" path="res://Scripts/main.gd" id="1_8gbba"]
 [ext_resource type="PackedScene" uid="uid://8cedbuk0hltb" path="res://Scenes/aguas.tscn" id="1_jjgbg"]
 [ext_resource type="PackedScene" uid="uid://bybr8tgbx4qe5" path="res://Scenes/gui.tscn" id="2_bo1nx"]
 [ext_resource type="PackedScene" uid="uid://cv64xvprunrml" path="res://Scenes/horse.tscn" id="2_jjvhh"]
+[ext_resource type="Texture2D" uid="uid://0ko1nh8u5y55" path="res://Assets/cost 1.png" id="3_hptm8"]
+[ext_resource type="Texture2D" uid="uid://c3nwkxwkqe2ki" path="res://Assets/cost 2.png" id="3_ynf5e"]
+[ext_resource type="AudioStream" uid="uid://cvusjwjbl8vs7" path="res://Assets/Music/Música de fondo.mp3" id="5_kry3j"]
+[ext_resource type="AudioStream" uid="uid://s4jidovkpol0" path="res://Assets/Music/VFX/SONIDO RESPUESTA INCORRECTA 1.MP3" id="7_ynf5e"]
+[ext_resource type="AudioStream" uid="uid://cfi6148my2gqd" path="res://Assets/Music/VFX/Respuesta Correcta ☑️ - Efecto de Sonido (Right Answer).MP3" id="8_hptm8"]
 
 [sub_resource type="Curve2D" id="Curve2D_8gbba"]
 _data = {
@@ -16,11 +21,23 @@ script = ExtResource("1_8gbba")
 horse = ExtResource("2_jjvhh")
 metadata/_edit_vertical_guides_ = [620.0]
 
+[node name="Arena" type="Sprite2D" parent="."]
+modulate = Color(0.348, 0.348, 0.81, 0.59)
+position = Vector2(660, -161)
+scale = Vector2(3.11523, 4.35938)
+texture = ExtResource("3_hptm8")
+
+[node name="Costa" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.282)
+position = Vector2(641.723, 301)
+scale = Vector2(2.48546, 1.18381)
+texture = ExtResource("3_ynf5e")
+
 [node name="Aguas" parent="." instance=ExtResource("1_jjgbg")]
 position = Vector2(-22, 260)
 
 [node name="HorseSpawner" type="Path2D" parent="."]
-position = Vector2(26, 3)
+position = Vector2(34, -469)
 curve = SubResource("Curve2D_8gbba")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="HorseSpawner"]
@@ -29,14 +46,34 @@ rotation = -0.013888
 rotates = false
 
 [node name="SpawnTimer" type="Timer" parent="HorseSpawner"]
-wait_time = 3.5
+wait_time = 2.5
 autostart = true
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 61.0
+wait_time = 30.0
+one_shot = true
+autostart = true
+
+[node name="PreparationTimer" type="Timer" parent="."]
+wait_time = 3.0
 one_shot = true
 autostart = true
 
 [node name="GUI" parent="." instance=ExtResource("2_bo1nx")]
 
+[node name="MusicaDeFondo" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_kry3j")
+volume_db = 5.0
+
+[node name="Error" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_ynf5e")
+
+[node name="Victoria" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_hptm8")
+
+[node name="Acierto" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_hptm8")
+
 [connection signal="timeout" from="HorseSpawner/SpawnTimer" to="." method="_on_spawn_timer_timeout"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="PreparationTimer" to="." method="_on_preparation_timer_timeout"]

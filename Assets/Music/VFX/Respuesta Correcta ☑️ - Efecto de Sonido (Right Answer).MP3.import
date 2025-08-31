@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cfi6148my2gqd"
+path="res://.godot/imported/Respuesta Correcta ☑️ - Efecto de Sonido (Right Answer).MP3-7aa4afa0d4020c644b2d301d91fd34ae.mp3str"
+
+[deps]
+
+source_file="res://Assets/Music/VFX/Respuesta Correcta ☑️ - Efecto de Sonido (Right Answer).MP3"
+dest_files=["res://.godot/imported/Respuesta Correcta ☑️ - Efecto de Sonido (Right Answer).MP3-7aa4afa0d4020c644b2d301d91fd34ae.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

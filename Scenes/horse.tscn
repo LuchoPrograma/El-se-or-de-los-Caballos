@@ -1,10 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://cv64xvprunrml"]
+[gd_scene load_steps=12 format=3 uid="uid://cv64xvprunrml"]
 
 [ext_resource type="Script" uid="uid://sv7ottbvd6dy" path="res://Scripts/horse.gd" id="1_8yyqj"]
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_8yyqj"]
-
-[sub_resource type="SphereMesh" id="SphereMesh_8yyqj"]
+[ext_resource type="Texture2D" uid="uid://tpipftcpptt3" path="res://Assets/horse spritesheet.png" id="2_8yyqj"]
+[ext_resource type="AudioStream" uid="uid://criupfjhs7wau" path="res://Assets/Music/VFX/sonido de caballo.MP3" id="3_i6lth"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8yyqj"]
 radius = 14.0
@@ -13,39 +11,42 @@ height = 168.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_0cnm0"]
 radius = 12.0
 
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_8yyqj"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_8yyqj"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i6lth"]
+atlas = ExtResource("2_8yyqj")
+region = Rect2(170, 72, 170, 370)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4uktf"]
+atlas = ExtResource("2_8yyqj")
+region = Rect2(0, 72, 170, 370)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mce7t"]
+atlas = ExtResource("2_8yyqj")
+region = Rect2(340, 72, 170, 370)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_40mhf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i6lth")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4uktf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mce7t")
+}],
+"loop": true,
+"name": &"walking",
+"speed": 8.0
+}]
+
 [node name="Horse" type="CharacterBody2D"]
 collision_layer = 2
 script = ExtResource("1_8yyqj")
-
-[node name="MeshInstance2D4" type="MeshInstance2D" parent="."]
-modulate = Color(0.708552, 0.440825, 0, 1)
-position = Vector2(0, 50)
-scale = Vector2(14, 27.5)
-mesh = SubResource("CapsuleMesh_8yyqj")
-
-[node name="MeshInstance2D2" type="MeshInstance2D" parent="."]
-modulate = Color(0.708552, 0.440825, 0, 1)
-position = Vector2(0, 43)
-scale = Vector2(28.0317, 30.8095)
-mesh = SubResource("SphereMesh_8yyqj")
-
-[node name="MeshInstance2D3" type="MeshInstance2D" parent="."]
-modulate = Color(0.708552, 0.440825, 0, 1)
-position = Vector2(-2.84217e-14, -9)
-scale = Vector2(34.0386, 35.6191)
-mesh = SubResource("CapsuleMesh_8yyqj")
-
-[node name="MeshInstance2D5" type="MeshInstance2D" parent="."]
-modulate = Color(0.708552, 0.440825, 0, 1)
-position = Vector2(3.55271e-15, -72)
-scale = Vector2(11, 27.0524)
-mesh = SubResource("CapsuleMesh_8yyqj")
-
-[node name="MeshInstance2D6" type="MeshInstance2D" parent="."]
-modulate = Color(0.708552, 0.440825, 0, 1)
-position = Vector2(-5.96046e-08, 19)
-scale = Vector2(19, 27.5)
-mesh = SubResource("CapsuleMesh_8yyqj")
 
 [node name="Area2D" type="Area2D" parent="."]
 
@@ -56,5 +57,50 @@ debug_color = Color(0.954084, 0.122287, 0.447777, 0.42)
 
 [node name="Collision" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_0cnm0")
+
+[node name="Node2D" type="Node2D" parent="."]
+visible = false
+
+[node name="MeshInstance2D4" type="MeshInstance2D" parent="Node2D"]
+modulate = Color(0.708552, 0.440825, 0, 1)
+position = Vector2(0, 50)
+scale = Vector2(14, 27.5)
+mesh = SubResource("CapsuleMesh_8yyqj")
+
+[node name="MeshInstance2D2" type="MeshInstance2D" parent="Node2D"]
+modulate = Color(0.708552, 0.440825, 0, 1)
+position = Vector2(0, 43)
+scale = Vector2(28.0317, 30.8095)
+mesh = SubResource("SphereMesh_8yyqj")
+
+[node name="MeshInstance2D3" type="MeshInstance2D" parent="Node2D"]
+modulate = Color(0.708552, 0.440825, 0, 1)
+position = Vector2(-2.84217e-14, -9)
+scale = Vector2(34.0386, 35.6191)
+mesh = SubResource("CapsuleMesh_8yyqj")
+
+[node name="MeshInstance2D5" type="MeshInstance2D" parent="Node2D"]
+modulate = Color(0.708552, 0.440825, 0, 1)
+position = Vector2(3.55271e-15, -72)
+scale = Vector2(11, 27.0524)
+mesh = SubResource("CapsuleMesh_8yyqj")
+
+[node name="MeshInstance2D6" type="MeshInstance2D" parent="Node2D"]
+modulate = Color(0.708552, 0.440825, 0, 1)
+position = Vector2(-5.96046e-08, 19)
+scale = Vector2(19, 27.5)
+mesh = SubResource("CapsuleMesh_8yyqj")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.48, 0.48)
+sprite_frames = SubResource("SpriteFrames_40mhf")
+animation = &"walking"
+autoplay = "walking"
+frame_progress = 0.985434
+
+[node name="Caballo" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_i6lth")
+volume_db = -18.0
+attenuation = 0.901251
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://s4jidovkpol0"
+path="res://.godot/imported/SONIDO RESPUESTA INCORRECTA 1.MP3-0961c3eb461b91cbb6118a92ece7c1d5.mp3str"
+
+[deps]
+
+source_file="res://Assets/Music/VFX/SONIDO RESPUESTA INCORRECTA 1.MP3"
+dest_files=["res://.godot/imported/SONIDO RESPUESTA INCORRECTA 1.MP3-0961c3eb461b91cbb6118a92ece7c1d5.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

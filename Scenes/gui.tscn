@@ -1,22 +1,35 @@
-[gd_scene format=3 uid="uid://bybr8tgbx4qe5"]
+[gd_scene load_steps=4 format=3 uid="uid://bybr8tgbx4qe5"]
+
+[ext_resource type="Script" uid="uid://dwrn8wm88m0ro" path="res://Scenes/gui.gd" id="1_qyd3e"]
+[ext_resource type="Texture2D" uid="uid://ll1mindfqocy" path="res://Assets/Sprites/Menu/Recurso 6.png" id="2_bm56d"]
+[ext_resource type="AudioStream" uid="uid://0indmj4gbi74" path="res://Assets/Music/Musica Menu.mp3" id="3_n5m23"]
 
 [node name="GUI" type="Control"]
+process_mode = 2
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_qyd3e")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="Controls" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 589.5
+offset_top = 41.0
+offset_right = 629.5
+offset_bottom = 81.0
+
+[node name="ColorRect" type="ColorRect" parent="Controls"]
 layout_mode = 0
-offset_left = 1.0
-offset_top = 1.0
-offset_right = 251.0
-offset_bottom = 721.0
-color = Color(0.00392157, 0.00392157, 0.00392157, 0.231373)
+offset_left = -588.5
+offset_top = -40.0
+offset_right = -338.5
+offset_bottom = 680.0
+color = Color(0, 0, 0, 0.509804)
 
-[node name="Player 2" type="Label" parent="ColorRect"]
+[node name="Player 2" type="Label" parent="Controls/ColorRect"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -33,15 +46,15 @@ size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 75
 text = "W"
 
-[node name="ColorRect2" type="ColorRect" parent="."]
+[node name="ColorRect2" type="ColorRect" parent="Controls"]
 layout_mode = 0
-offset_left = 1028.0
-offset_top = 1.0
-offset_right = 1278.0
-offset_bottom = 721.0
-color = Color(0.00392157, 0.00392157, 0.00392157, 0.235294)
+offset_left = 438.5
+offset_top = -40.0
+offset_right = 688.5
+offset_bottom = 680.0
+color = Color(0.00392157, 0.00392157, 0.00392157, 0.509804)
 
-[node name="Player 1" type="Label" parent="ColorRect2"]
+[node name="Player 1" type="Label" parent="Controls/ColorRect2"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -58,7 +71,48 @@ size_flags_horizontal = 8
 theme_override_font_sizes/font_size = 75
 text = "W"
 
+[node name="Menu" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Menu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.166853, 0.166853, 0.166853, 1)
+
+[node name="Fondo" type="Sprite2D" parent="Menu"]
+
+[node name="Titulo" type="Sprite2D" parent="Menu"]
+position = Vector2(635, 244)
+texture = ExtResource("2_bm56d")
+
+[node name="PlayText" type="Label" parent="Menu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -288.0
+offset_top = 60.0
+offset_right = 288.0
+offset_bottom = 115.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 40
+text = "presiona ESPACIO para JUGAR"
+
 [node name="Timer" type="Label" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.4875
@@ -72,3 +126,136 @@ grow_horizontal = 2
 theme_override_font_sizes/font_size = 60
 text = "60"
 metadata/_edit_use_anchors_ = true
+
+[node name="GameOverScreen" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="GameOverScreen"]
+layout_mode = 0
+offset_right = 1281.0
+offset_bottom = 719.0
+color = Color(0.215686, 0.215686, 0.215686, 0.407843)
+
+[node name="GameOverText" type="Label" parent="GameOverScreen"]
+modulate = Color(1, 0.175901, 0.109322, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 60
+text = "GAME OVER"
+
+[node name="TryAgainText" type="Label" parent="GameOverScreen"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -160.0
+offset_top = 67.0
+offset_right = 160.0
+offset_bottom = 90.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "presiona ESPACIO para intentar de nuevo"
+
+[node name="VictoryScreen" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="VictoryScreen"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.254902, 1, 0.0862745, 0.227451)
+
+[node name="ColorRect2" type="ColorRect" parent="VictoryScreen"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -53.0
+offset_bottom = 108.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.227451)
+
+[node name="VictoryText" type="Label" parent="VictoryScreen"]
+modulate = Color(0, 0.94902, 0, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 100
+text = "VICTORIA"
+
+[node name="TryAgainText" type="Label" parent="VictoryScreen"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -160.0
+offset_top = 67.0
+offset_right = 160.0
+offset_bottom = 90.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 20
+text = "presiona ESPACIO para JUGAR de nuevo"
+
+[node name="GetReadyText" type="Label" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -191.5
+offset_top = -41.5
+offset_right = 191.5
+offset_bottom = 41.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 60
+text = "Preparados..."
+
+[node name="MusicaMenu" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_n5m23")
+volume_db = 5.0
+autoplay = true
