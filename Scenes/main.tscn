@@ -16,6 +16,9 @@ script = ExtResource("1_8gbba")
 horse = ExtResource("2_jjvhh")
 metadata/_edit_vertical_guides_ = [620.0]
 
+[node name="Aguas" parent="." instance=ExtResource("1_jjgbg")]
+position = Vector2(-22, 260)
+
 [node name="HorseSpawner" type="Path2D" parent="."]
 position = Vector2(26, 3)
 curve = SubResource("Curve2D_8gbba")
@@ -28,9 +31,6 @@ rotates = false
 [node name="SpawnTimer" type="Timer" parent="HorseSpawner"]
 wait_time = 3.5
 autostart = true
-
-[node name="Aguas" parent="." instance=ExtResource("1_jjgbg")]
-position = Vector2(-22, 260)
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 61.0

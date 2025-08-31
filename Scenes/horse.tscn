@@ -1,18 +1,17 @@
-[gd_scene load_steps=7 format=3 uid="uid://cv64xvprunrml"]
+[gd_scene load_steps=6 format=3 uid="uid://cv64xvprunrml"]
 
 [ext_resource type="Script" uid="uid://sv7ottbvd6dy" path="res://Scripts/horse.gd" id="1_8yyqj"]
-[ext_resource type="Texture2D" uid="uid://bn6uxdfj0sh8h" path="res://Assets/Sprite.png" id="1_guxo3"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_8yyqj"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_0cnm0"]
-radius = 17.0294
 
 [sub_resource type="SphereMesh" id="SphereMesh_8yyqj"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8yyqj"]
-radius = 13.0
+radius = 14.0
 height = 168.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0cnm0"]
+radius = 12.0
 
 [node name="Horse" type="CharacterBody2D"]
 collision_layer = 2
@@ -23,15 +22,6 @@ modulate = Color(0.708552, 0.440825, 0, 1)
 position = Vector2(0, 50)
 scale = Vector2(14, 27.5)
 mesh = SubResource("CapsuleMesh_8yyqj")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_0cnm0")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(1.90735e-06, 0)
-scale = Vector2(2.32054, 2.42829)
-texture = ExtResource("1_guxo3")
 
 [node name="MeshInstance2D2" type="MeshInstance2D" parent="."]
 modulate = Color(0.708552, 0.440825, 0, 1)
@@ -62,5 +52,9 @@ mesh = SubResource("CapsuleMesh_8yyqj")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(0, -12)
 shape = SubResource("CapsuleShape2D_8yyqj")
+debug_color = Color(0.954084, 0.122287, 0.447777, 0.42)
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_0cnm0")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
